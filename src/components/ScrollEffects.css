@@ -8,6 +8,14 @@
   z-index: 999;
   background: rgba(255, 255, 255, 0.03);
   pointer-events: none;
+  display: none; /* 默认隐藏，PC端显示 */
+}
+
+@media (min-width: 769px) {
+  .scroll-progress {
+    display: block;
+  }
+}
 }
 
 .scroll-progress__bar {

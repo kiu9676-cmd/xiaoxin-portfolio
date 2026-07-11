@@ -54,8 +54,8 @@
 /* —— 3D 舞台 —— */
 .experience__3d-stage {
   width: 100%;
-  height: 340px;
-  perspective: 2200px;
+  height: 204px;
+  perspective: 1320px;
   perspective-origin: 50% 45%;
   display: flex;
   align-items: center;
@@ -66,8 +66,8 @@
 /* —— 旋转体 —— */
 .experience__3d-rotor {
   position: relative;
-  width: 360px;
-  height: 260px;
+  width: 216px;
+  height: 156px;
   transform-style: preserve-3d;
   transition: transform 0.6s var(--ease-spring);
   will-change: transform;
@@ -78,9 +78,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 360px;
-  height: 260px;
-  transform: rotateY(var(--card-angle, 0deg)) translateZ(var(--card-z, 650px));
+  width: 216px;
+  height: 156px;
+  transform: rotateY(var(--card-angle, 0deg)) translateZ(var(--card-z, 390px));
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   cursor: default;
@@ -134,23 +134,23 @@
 .experience__card-top {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 0 32px;
-  margin-top: 6px;
+  gap: 12px;
+  padding: 0 20px;
+  margin-top: 4px;
 }
 
 .experience__logo {
-  width: 56px;
-  height: 56px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 900;
   color: var(--c-bg);
-  border-radius: 14px;
+  border-radius: 10px;
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(255, 122, 48, 0.2);
+  box-shadow: 0 4px 12px rgba(255, 122, 48, 0.2);
 }
 
 .experience__card-info {
@@ -161,7 +161,7 @@
 }
 
 .experience__company {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.01em;
   white-space: nowrap;
@@ -170,21 +170,21 @@
 }
 
 .experience__position {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--c-orange-light);
   margin-top: 3px;
 }
 
 .experience__period {
-  padding: 0 32px;
+  padding: 0 20px;
   font-size: 12px;
   color: var(--c-text-3);
   font-family: 'Space Grotesk', monospace;
 }
 
 .experience__short {
-  padding: 0 32px;
+  padding: 0 20px;
   font-size: 14px;
   color: var(--c-text-2);
   line-height: 1.7;
@@ -195,9 +195,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 32px;
+  padding: 10px 20px;
   margin-top: auto;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
   color: var(--c-text-3);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -292,17 +292,19 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  width: 34px;
-  height: 34px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--c-text-2);
+  background: rgba(255, 122, 48, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: var(--c-white);
   cursor: pointer;
   transition: all 0.3s var(--ease-spring);
+  box-shadow: 0 4px 20px rgba(255, 122, 48, 0.4);
 }
 
 .experience__modal-close:hover {
@@ -392,33 +394,50 @@
 
 /* —— 响应式 —— */
 @media (max-width: 768px) {
+  .experience { display: none; }
+}
   .experience__3d-stage {
-    height: 300px;
-    perspective: 900px;
+    height: 200px;
+    perspective: 600px;
+    overflow: hidden;
   }
   .experience__3d-rotor {
-    width: 270px;
-    height: 220px;
+    width: 200px;
+    height: 150px;
   }
   .experience__3d-card {
-    width: 270px;
-    height: 220px;
-    --card-z: 380px;
+    width: 200px;
+    height: 150px;
+    --card-z: 200px;
   }
   .experience__card-top,
   .experience__period,
   .experience__short {
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
   .experience__card-footer {
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .experience__company {
+    font-size: 16px;
+  }
+  .experience__position {
+    font-size: 12px;
+  }
+  .experience__short {
+    font-size: 12px;
+  }
+  .experience__logo {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
   .experience__modal {
-    padding: 24px;
+    padding: 20px;
   }
   .experience__modal-company {
-    font-size: 20px;
+    font-size: 18px;
   }
 }

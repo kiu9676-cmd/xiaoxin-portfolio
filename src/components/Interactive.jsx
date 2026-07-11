@@ -174,6 +174,13 @@ export default function Interactive() {
       {selected && (
         <div className="carddex__modal-overlay" onClick={() => setSelected(null)}>
           <div className="carddex__modal glass" onClick={(e) => e.stopPropagation()}>
+            {/* 手机端返回栏 */}
+            <button className="carddex__modal-back" onClick={() => setSelected(null)}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              返回
+            </button>
             <button className="carddex__modal-close" onClick={() => setSelected(null)}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />

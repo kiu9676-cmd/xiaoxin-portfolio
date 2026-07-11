@@ -268,7 +268,10 @@ button:active { transform: scale(0.96) !important; transition: transform 0.1s ea
 
 /* —— 响应式 —— */
 @media (max-width: 768px) {
-  :root { --section-pad: 48px; }
-  .section-desc { font-size: 14px; }
-  .section-tag { font-size: 11px; padding: 5px 12px; }
+  :root { --section-pad: 40px; }
+  .section-desc { display: none; }
+  .section-tag { font-size: 10px; padding: 4px 10px; }
+  .section-title { font-size: 22px; margin-top: 12px; }
+  .container { padding-left: 14px; padding-right: 14px; }
+  img, video, svg { max-width: 100%; }
 }

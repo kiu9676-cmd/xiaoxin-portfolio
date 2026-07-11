@@ -209,12 +209,12 @@ export default function Works() {
                 style={{ background: work.gradient }}
                 onClick={() => setSelected(work)}
               >
-                {/* 视频缩略图 —— 不预加载，点击后在弹窗加载 */}
+                {/* 视频缩略图 */}
                 {work.videoSrc && (
                   <video
                     className="works__visual-video"
                     src={work.videoSrc}
-                    preload="none"
+                    preload="metadata"
                     muted
                     playsInline
                   />
@@ -294,6 +294,13 @@ export default function Works() {
       {selected && (
         <div className="works__modal-overlay" onClick={closeModal}>
           <div className="works__modal" onClick={(e) => e.stopPropagation()}>
+            {/* 手机端返回栏 */}
+            <button className="works__modal-back" onClick={closeModal}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              返回
+            </button>
             {/* 关闭按钮 */}
             <button className="works__modal-close" onClick={closeModal}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

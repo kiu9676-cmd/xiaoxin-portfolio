@@ -216,7 +216,8 @@
 /* —— 按钮 —— */
 .hero__actions {
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-top: 40px;
   animation: fadeUp 1s var(--ease-out) 0.9s both;
 }
@@ -348,7 +349,7 @@
 /* —— 响应式 —— */
 @media (max-width: 768px) {
   .hero {
-    padding-top: 100px;
+    padding-top: 60px;
     min-height: auto;
     padding-bottom: 60px;
   }
@@ -356,15 +357,23 @@
     font-size: 11px;
     padding: 6px 14px;
   }
+  .hero__title {
+    font-size: 38px;
+  }
   .hero__subtitle {
-    font-size: 16px;
+    font-size: 15px;
   }
   .hero__subtitle-en {
     font-size: 12px;
   }
+  .hero__actions {
+    flex-direction: column;
+    gap: 10px;
+  }
   .hero__btn {
-    padding: 12px 24px;
+    padding: 14px 24px;
     font-size: 14px;
+    justify-content: center;
   }
   .hero__stats {
     gap: 20px;

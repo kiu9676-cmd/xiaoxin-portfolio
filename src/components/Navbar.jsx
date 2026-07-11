@@ -4,7 +4,7 @@ import './Navbar.css'
 
 const NAV_ITEMS = [
   { id: 'about', label: '角色介绍', labelEn: 'About' },
-  { id: 'experience', label: '职业经历', labelEn: 'Career' },
+  { id: 'experience', label: '职业经历', labelEn: 'Career', mobileOnly: false },
   { id: 'works', label: '作品案例', labelEn: 'Works' },
   { id: 'interactive', label: '互动体验', labelEn: 'Play' },
   { id: 'contact', label: '联系方式', labelEn: 'Contact' },
@@ -94,9 +94,9 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* 移动端展开菜单 */}
+      {/* 移动端展开菜单 —— 职业经历在手机端隐藏 */}
       <div className={`navbar__mobile ${menuOpen ? 'navbar__mobile--open' : ''}`}>
-        {NAV_ITEMS.map((item) => (
+        {NAV_ITEMS.filter((item) => item.id !== 'experience').map((item) => (
           <button key={item.id} className="navbar__mobile-link" onClick={() => handleClick(item.id)}>
             {item.label}
           </button>
