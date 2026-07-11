@@ -7,3 +7,4 @@ public/videos/original
 public/audio/original
 ffmpeg.exe
 compress.cjs
+*.zip
