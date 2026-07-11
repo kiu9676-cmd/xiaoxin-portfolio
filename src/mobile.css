@@ -227,24 +227,14 @@
     z-index: 99999 !important;
   }
 
-  /* 放大返回栏 —— 仅手机端 */
+  /* 放大返回栏 —— 手机端全屏顶部 */
   .carddex__zoom-back {
-    display: flex !important;
-    align-items: center;
-    gap: 6px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 50px;
-    padding: 0 20px;
-    background: rgba(255, 122, 48, 0.95);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: inherit;
-    border: none;
-    cursor: pointer;
+    border-radius: 0;
     z-index: 10000;
   }
 
