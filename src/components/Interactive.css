@@ -226,8 +226,8 @@
 .carddex__modal {
   position: relative;
   width: 100%;
-  max-width: 1200px;
-  height: 42vh;
+  max-width: 720px;
+  max-height: 80vh;
   display: flex;
   overflow: hidden;
   animation: cdModalIn 0.4s var(--ease-spring);
@@ -564,31 +564,9 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* —— 放大返回栏 —— */
+/* —— 放大返回栏 —— PC端隐藏 */
 .carddex__zoom-back {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  height: 44px;
-  padding: 0 20px;
-  background: rgba(255, 122, 48, 0.95);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: inherit;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  z-index: 100;
-  transition: all 0.3s var(--ease-out);
-}
-
-.carddex__zoom-back:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(255, 122, 48, 0.4);
+  display: none;
 }
 
 /* —— 响应式 —— */
