@@ -159,6 +159,19 @@
       "gradient": "linear-gradient(135deg, #1a1208 0%, #5e4a1c 40%, #FFB347 100%)",
       "glow": "rgba(255, 179, 71, 0.5)",
       "imageSrc": null
+    },
+    {
+      "id": 1783796563422,
+      "name": "鹅鹅鹅",
+      "title": "4545",
+      "series": "5454545",
+      "element": "元素",
+      "elementIcon": "✦",
+      "backstory": "",
+      "quote": "",
+      "gradient": "linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)",
+      "glow": "rgba(255, 122, 48, 0.5)",
+      "imageSrc": null
     }
   ]
 }
