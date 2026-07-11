@@ -40,7 +40,7 @@
 
   /* —— 间距与尺寸 —— */
   --max-width: 1920px;
-  --gutter: clamp(24px, 4vw, 64px);
+  --gutter: clamp(16px, 4vw, 64px);
   --section-pad: clamp(80px, 10vh, 160px);
 
   /* —— 圆角 —— */
@@ -149,11 +149,13 @@ body::after {
 }
 
 .section-title {
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(28px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-top: 24px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .section-title .accent {
@@ -193,10 +195,11 @@ body::after {
 }
 
 /* —— 滚动条 —— */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--c-bg); }
-::-webkit-scrollbar-thumb { background: rgba(255, 122, 48, 0.3); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255, 122, 48, 0.5); }
+::-webkit-scrollbar { display: none; }
+html { -ms-overflow-style: none; scrollbar-width: none; }
+::-webkit-scrollbar-track { display: none; }
+::-webkit-scrollbar-thumb { display: none; }
+::-webkit-scrollbar-thumb:hover { display: none; }
 
 /* —— 选区 —— */
 ::selection { background: rgba(255, 122, 48, 0.3); color: var(--c-white); }
@@ -265,5 +268,7 @@ button:active { transform: scale(0.96) !important; transition: transform 0.1s ea
 
 /* —— 响应式 —— */
 @media (max-width: 768px) {
-  :root { --section-pad: 64px; }
+  :root { --section-pad: 48px; }
+  .section-desc { font-size: 14px; }
+  .section-tag { font-size: 11px; padding: 5px 12px; }
 }

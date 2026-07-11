@@ -6,7 +6,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5188,
-    open: false
+    open: false,
+    headers: {
+      'X-Frame-Options': 'ALLOWALL'
+    }
   },
   build: {
     outDir: 'dist',

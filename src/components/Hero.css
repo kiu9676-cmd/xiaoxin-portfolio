@@ -154,11 +154,13 @@
 }
 
 .hero__title {
-  font-size: clamp(56px, 9vw, 128px);
+  font-size: clamp(40px, 9vw, 128px);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.04em;
   margin-top: 28px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .hero__title-line {
@@ -348,7 +350,21 @@
   .hero {
     padding-top: 100px;
     min-height: auto;
-    padding-bottom: 80px;
+    padding-bottom: 60px;
+  }
+  .hero__badge {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+  .hero__subtitle {
+    font-size: 16px;
+  }
+  .hero__subtitle-en {
+    font-size: 12px;
+  }
+  .hero__btn {
+    padding: 12px 24px;
+    font-size: 14px;
   }
   .hero__stats {
     gap: 20px;
