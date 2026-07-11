@@ -171,6 +171,10 @@
   .experience {
     display: none;
   }
+  /* 手机端隐藏BGM播放器 */
+  .music-player {
+    display: none !important;
+  }
 }
 
 /* —— 角色卡牌 —— */

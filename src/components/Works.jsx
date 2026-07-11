@@ -17,6 +17,7 @@ const WORKS = [
     gradient: 'linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)',
     videoSrc: '/videos/xhlr.mp4',
     posterSrc: '/images/posters/xhlr.jpg',
+    downloadSrc: '/videos/watermarked/xhlr.mp4',
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const WORKS = [
     gradient: 'linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF6B35 100%)',
     videoSrc: '/videos/赛博.mp4',
     posterSrc: '/images/posters/赛博.jpg',
+    downloadSrc: '/videos/watermarked/赛博.mp4',
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ const WORKS = [
     gradient: 'linear-gradient(135deg, #06141d 0%, #1a4a5e 40%, #FFB347 100%)',
     videoSrc: '/videos/深海.mp4',
     posterSrc: '/images/posters/深海.jpg',
+    downloadSrc: '/videos/watermarked/深海.mp4',
   },
   {
     id: 4,
@@ -56,6 +59,7 @@ const WORKS = [
     gradient: 'linear-gradient(135deg, #1e1208 0%, #7a5c2e 40%, #FFE9A8 100%)',
     videoSrc: '/videos/光阴.mp4',
     posterSrc: '/images/posters/光阴.jpg',
+    downloadSrc: '/videos/watermarked/光阴.mp4',
   },
 ]
 
@@ -367,7 +371,7 @@ export default function Works() {
                   onClick={() => {
                     if (selected.videoSrc) {
                       const a = document.createElement('a')
-                      a.href = selected.videoSrc
+                      a.href = selected.downloadSrc || selected.videoSrc
                       a.download = selected.title + '.mp4'
                       a.click()
                     } else {
