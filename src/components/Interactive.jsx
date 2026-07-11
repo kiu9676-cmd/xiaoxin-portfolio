@@ -3,8 +3,6 @@ import './Interactive.css'
 import SectionBg from './SectionBg'
 import content from '../data/content.json'
 
-const CHARACTERS = content.characters
-
 const SERIES = ['全部', '星河旅人', '赛博之梦', '深海回响', '花语四季', '古城晨曦', '光阴之间']
 
 const CHARACTERS = content.characters
