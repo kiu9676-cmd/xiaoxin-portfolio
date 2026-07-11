@@ -383,12 +383,9 @@ export default function Works() {
                 </button>
                 <button
                   className="works__modal-btn works__modal-btn--ghost"
-                  onClick={() => {
-                    closeModal()
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-                  }}
+                  onClick={closeModal}
                 >
-                  咨询合作
+                  返回
                 </button>
               </div>
             </div>
