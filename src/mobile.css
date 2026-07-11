@@ -281,7 +281,7 @@
 /* —— 角色介绍 —— */
 @media (max-width: 768px) {
   .about__features {
-    display: none;
+    display: none !important;
   }
   .about__card {
     padding: 20px;
