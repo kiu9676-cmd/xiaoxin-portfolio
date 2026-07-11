@@ -115,7 +115,7 @@ export default function Experience() {
                 <div
                   key={exp.id}
                   className={`experience__3d-card ${isActive ? 'experience__3d-card--active' : ''}`}
-                  style={{ transform: `rotateY(${i * angleStep}deg) translateZ(650px)` }}
+                  style={{ '--card-angle': `${i * angleStep}deg`, '--card-z': '650px' }}
                   onClick={() => isActive && handleCardClick(exp)}
                 >
                   <div className="experience__card glass">

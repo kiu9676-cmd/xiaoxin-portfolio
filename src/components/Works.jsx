@@ -209,12 +209,12 @@ export default function Works() {
                 style={{ background: work.gradient }}
                 onClick={() => setSelected(work)}
               >
-                {/* 视频缩略图（如果有视频） */}
+                {/* 视频缩略图 —— 不预加载，点击后在弹窗加载 */}
                 {work.videoSrc && (
                   <video
                     className="works__visual-video"
                     src={work.videoSrc}
-                    preload="metadata"
+                    preload="none"
                     muted
                     playsInline
                   />

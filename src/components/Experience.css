@@ -80,6 +80,7 @@
   left: 0;
   width: 360px;
   height: 260px;
+  transform: rotateY(var(--card-angle, 0deg)) translateZ(var(--card-z, 650px));
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   cursor: default;
@@ -393,15 +394,16 @@
 @media (max-width: 768px) {
   .experience__3d-stage {
     height: 300px;
-    perspective: 1100px;
+    perspective: 900px;
   }
   .experience__3d-rotor {
-    width: 290px;
-    height: 240px;
+    width: 270px;
+    height: 220px;
   }
   .experience__3d-card {
-    width: 290px;
-    height: 240px;
+    width: 270px;
+    height: 220px;
+    --card-z: 380px;
   }
   .experience__card-top,
   .experience__period,

@@ -724,20 +724,23 @@
 
 @media (max-width: 768px) {
   .works__modal-overlay {
-    padding: 16px;
+    padding: 0;
   }
   .works__modal {
     flex-direction: column;
-    max-height: 85vh;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
   }
   .works__modal-media {
-    flex: 0 0 200px;
+    flex: 0 0 35vh;
   }
   .works__modal-body {
-    padding: 24px;
+    padding: 20px;
+    flex: 1;
   }
   .works__modal-title {
-    font-size: 22px;
+    font-size: 20px;
   }
   .works__modal-meta {
     flex-direction: column;
@@ -748,6 +751,16 @@
   }
   .works__modal-btn {
     justify-content: center;
+  }
+  .works__featured {
+    aspect-ratio: 16 / 10;
+    min-height: 260px;
+  }
+  .works__featured-content {
+    padding: 24px;
+  }
+  .works__featured-title {
+    font-size: 24px;
   }
 }
 
