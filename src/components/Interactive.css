@@ -564,6 +564,17 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+/* PC端隐藏返回按钮, 手机端显示 */
+.carddex__modal-btn--back {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .carddex__modal-btn--back {
+    display: inline-flex;
+  }
+}
+
 /* —— 放大返回栏 —— PC端隐藏 */
 .carddex__zoom-back {
   display: none;

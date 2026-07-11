@@ -382,7 +382,16 @@ export default function Works() {
                   下载素材
                 </button>
                 <button
-                  className="works__modal-btn works__modal-btn--ghost"
+                  className="works__modal-btn works__modal-btn--ghost works__modal-btn--contact"
+                  onClick={() => {
+                    closeModal()
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                >
+                  咨询合作
+                </button>
+                <button
+                  className="works__modal-btn works__modal-btn--ghost works__modal-btn--back"
                   onClick={closeModal}
                 >
                   返回

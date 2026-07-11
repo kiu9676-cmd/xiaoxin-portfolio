@@ -590,6 +590,21 @@
   border-radius: 2px;
 }
 
+/* PC端: 隐藏返回按钮, 显示咨询合作 */
+.works__modal-btn--back {
+  display: none;
+}
+
+/* 手机端: 隐藏咨询合作, 显示返回 */
+@media (max-width: 768px) {
+  .works__modal-btn--contact {
+    display: none;
+  }
+  .works__modal-btn--back {
+    display: inline-flex;
+  }
+}
+
 .works__modal-tags {
   display: flex;
   gap: 6px;

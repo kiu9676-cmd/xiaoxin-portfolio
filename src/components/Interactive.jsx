@@ -248,7 +248,7 @@ export default function Interactive() {
                   </svg>
                   下载素材
                 </button>
-                <button className="carddex__modal-btn carddex__modal-btn--ghost" onClick={() => setSelected(null)}>
+                <button className="carddex__modal-btn carddex__modal-btn--ghost carddex__modal-btn--back" onClick={() => setSelected(null)}>
                   返回
                 </button>
               </div>
