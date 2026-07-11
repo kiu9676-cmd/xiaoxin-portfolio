@@ -37,19 +37,16 @@ export default function About() {
   const videoRef = useRef(null)
   const [videoLoaded, setVideoLoaded] = useState(false)
 
-  // 懒加载：滚动到 About 区域才加载背景视频
+  // 懒加载：滚动到 About 区域立即加载背景视频
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !videoLoaded) {
           setVideoLoaded(true)
-          // 延迟加载视频，让其他资源先加载
-          setTimeout(() => {
-            if (videoRef.current) {
-              videoRef.current.load()
-              videoRef.current.play().catch(() => {})
-            }
-          }, 1500)
+          if (videoRef.current) {
+            videoRef.current.load()
+            videoRef.current.play().catch(() => {})
+          }
         }
       },
       { rootMargin: '200px' }
