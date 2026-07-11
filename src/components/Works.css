@@ -453,7 +453,7 @@
   position: relative;
   width: 100%;
   max-width: 1200px;
-  height: 42vh;
+  height: 80vh;
   display: flex;
   flex-direction: row;
   background: var(--c-bg-2);
@@ -468,31 +468,9 @@
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* 手机端返回栏 */
+/* 手机端返回栏 —— 默认隐藏 */
 .works__modal-back {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
-  padding: 0 20px;
-  background: rgba(255, 122, 48, 0.95);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  font-family: inherit;
-  border: none;
-  cursor: pointer;
-  z-index: 30;
-}
-
-@media (min-width: 769px) {
-  .works__modal-back {
-    display: none;
-  }
+  display: none;
 }
 
 /* 关闭按钮 */
@@ -761,6 +739,25 @@
     max-height: 100vh;
     border-radius: 0;
     padding-top: 50px;
+  }
+  .works__modal-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    padding: 0 20px;
+    background: rgba(255, 122, 48, 0.95);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    z-index: 30;
   }
   .works__modal-close {
     top: 8px;
