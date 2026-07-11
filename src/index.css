@@ -1,0 +1,269 @@
+/* ============================================
+   XiaoXin Portfolio — Global Design System
+   温暖 · 梦幻 · 克制 · 科技感
+   ============================================ */
+
+:root {
+  /* —— 色彩系统 —— */
+  --c-orange: #FF7A30;
+  --c-orange-light: #FFA56B;
+  --c-orange-deep: #E85D1A;
+  --c-amber: #FFB347;
+  --c-yellow: #FFD56B;
+  --c-yellow-soft: #FFE9A8;
+  --c-cream: #FFF8F0;
+  --c-cream-deep: #FAF0E0;
+  --c-white: #FFFFFF;
+
+  --c-bg: #0D0A06;
+  --c-bg-2: #15100A;
+  --c-bg-3: #1F1810;
+  --c-surface: rgba(255, 255, 255, 0.04);
+  --c-surface-hover: rgba(255, 255, 255, 0.08);
+  --c-glass: rgba(255, 255, 255, 0.06);
+  --c-glass-border: rgba(255, 255, 255, 0.12);
+  --c-glass-strong: rgba(255, 255, 255, 0.1);
+
+  --c-text: #FFF8F0;
+  --c-text-2: rgba(255, 248, 240, 0.72);
+  --c-text-3: rgba(255, 248, 240, 0.45);
+  --c-text-muted: rgba(255, 248, 240, 0.3);
+
+  --c-accent: #FF8C42;
+  --c-accent-glow: rgba(255, 140, 66, 0.35);
+  --c-gradient-warm: linear-gradient(135deg, #FF7A30 0%, #FFB347 50%, #FFD56B 100%);
+  --c-gradient-warm-soft: linear-gradient(135deg, rgba(255, 122, 48, 0.15) 0%, rgba(255, 213, 107, 0.08) 100%);
+
+  /* —— 字体 —— */
+  --font-sans: 'Space Grotesk', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+  --font-cn: 'Noto Sans SC', system-ui, sans-serif;
+
+  /* —— 间距与尺寸 —— */
+  --max-width: 1920px;
+  --gutter: clamp(24px, 4vw, 64px);
+  --section-pad: clamp(80px, 10vh, 160px);
+
+  /* —— 圆角 —— */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+
+  /* —— 过渡 —— */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur: 0.8s;
+}
+
+/* —— Reset —— */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+/* 背景层 —— 暖色光晕 + 动态漂移 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 0%, rgba(255, 122, 48, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 30%, rgba(255, 213, 107, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(255, 140, 66, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 70% 80%, rgba(255, 179, 71, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: bgShift 30s ease-in-out infinite;
+}
+
+@keyframes bgShift {
+  0%, 100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+  33% { background-position: 5% 3%, -3% 2%, 2% -2%, -2% 3%; }
+  66% { background-position: -3% 2%, 4% -3%, -2% 3%, 3% -2%; }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.85 0 0 0 0 0.6 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+#root {
+  position: relative;
+  z-index: 2;
+}
+
+/* —— 通用工具 —— */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-orange-light);
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(255, 122, 48, 0.08);
+  border: 1px solid rgba(255, 122, 48, 0.18);
+}
+
+.section-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-orange);
+  box-shadow: 0 0 8px var(--c-orange);
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-top: 24px;
+}
+
+.section-title .accent {
+  background: var(--c-gradient-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-desc {
+  font-size: clamp(15px, 1.2vw, 18px);
+  color: var(--c-text-2);
+  max-width: 560px;
+  margin-top: 20px;
+  line-height: 1.7;
+}
+
+/* —— 玻璃卡片基础 —— */
+.glass {
+  background: var(--c-glass);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--c-glass-border);
+  border-radius: var(--radius-lg);
+}
+
+/* —— 滚动出现动画 —— */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* —— 滚动条 —— */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: rgba(255, 122, 48, 0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 122, 48, 0.5); }
+
+/* —— 选区 —— */
+::selection { background: rgba(255, 122, 48, 0.3); color: var(--c-white); }
+
+/* ============================================
+   全局按钮动画系统
+   ============================================ */
+button { position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; }
+button:active { transform: scale(0.96) !important; transition: transform 0.1s ease-out; }
+
+.navbar__cta, .hero__btn--primary, .works__filter--active, .works__modal-btn--primary,
+.carddex__filter--active, .navbar__mobile-cta {
+  position: relative; overflow: hidden;
+}
+
+.navbar__cta::before, .hero__btn--primary::before, .works__filter--active::before,
+.works__modal-btn--primary::before, .carddex__filter--active::before, .navbar__mobile-cta::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+  transition: left 0.6s var(--ease-out); pointer-events: none; z-index: 1;
+}
+
+.navbar__cta:hover::before, .hero__btn--primary:hover::before, .works__filter--active:hover::before,
+.works__modal-btn--primary:hover::before, .carddex__filter--active:hover::before, .navbar__mobile-cta:hover::before {
+  left: 100%;
+}
+
+.hero__btn--ghost, .works__more-btn, .works__modal-btn--ghost, .works__info-btn, .contact__card-arrow {
+  transition: all 0.4s var(--ease-out);
+}
+
+.hero__btn--ghost:hover, .works__more-btn:hover, .works__modal-btn--ghost:hover {
+  box-shadow: 0 0 24px rgba(255, 122, 48, 0.15);
+}
+
+.navbar__link::after {
+  content: ''; position: absolute; bottom: 2px; left: 50%; width: 0; height: 2px;
+  background: var(--c-gradient-warm); border-radius: 1px; transform: translateX(-50%);
+  transition: width 0.4s var(--ease-out);
+}
+
+.navbar__link:hover::after { width: 60%; }
+.navbar__link--active::after { width: 0; }
+
+.works__filter, .carddex__filter { transition: all 0.4s var(--ease-spring); }
+.works__filter:hover:not(.works__filter--active), .carddex__filter:hover:not(.carddex__filter--active) {
+  transform: translateY(-2px); border-color: rgba(255, 122, 48, 0.25); color: var(--c-orange-light);
+}
+
+.works__info-btn:hover { animation: arrowBounce 0.5s var(--ease-spring); }
+@keyframes arrowBounce {
+  0% { transform: rotate(0) scale(1); }
+  40% { transform: rotate(45deg) scale(1.15); }
+  100% { transform: rotate(45deg) scale(1); }
+}
+
+.works__visual { transition: box-shadow 0.4s var(--ease-out); }
+.works__item:hover .works__visual {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 122, 48, 0.15);
+}
+
+.carddex__card { transition: transform 0.4s var(--ease-spring); }
+
+.contact__card-arrow { transition: all 0.4s var(--ease-spring); }
+.works__modal-close { transition: all 0.3s var(--ease-spring); }
+
+/* —— 响应式 —— */
+@media (max-width: 768px) {
+  :root { --section-pad: 64px; }
+}

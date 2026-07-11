@@ -1,0 +1,76 @@
+/* —— 顶部滚动进度条 —— */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+.scroll-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, #FF7A30 0%, #FFB347 50%, #FFD56B 100%);
+  box-shadow: 0 0 12px rgba(255, 122, 48, 0.6), 0 0 4px rgba(255, 213, 107, 0.8);
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ============================================
+   入场动画系统 —— 轻量化，GPU 加速
+   ============================================ */
+
+/* —— 通用 reveal 基础 —— */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* —— 从左滑入（轻量） —— */
+.reveal[data-reveal="left"] {
+  transform: translate3d(-30px, 0, 0);
+}
+.reveal[data-reveal="left"].visible {
+  transform: translate3d(0, 0, 0);
+}
+
+/* —— 从右滑入（轻量） —— */
+.reveal[data-reveal="right"] {
+  transform: translate3d(30px, 0, 0);
+}
+.reveal[data-reveal="right"].visible {
+  transform: translate3d(0, 0, 0);
+}
+
+/* —— 缩放进入 —— */
+.reveal[data-reveal="scale"] {
+  transform: translate3d(0, 20px, 0) scale(0.92);
+}
+.reveal[data-reveal="scale"].visible {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* —— 淡入上移（替代 blur，性能更好） —— */
+.reveal[data-reveal="blur"] {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+}
+.reveal[data-reveal="blur"].visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* —— Hero 背景视差 —— */
+.hero__bg-orb,
+.hero__bg-grid,
+.hero__canvas {
+  will-change: transform;
+}

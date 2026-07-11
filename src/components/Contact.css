@@ -1,0 +1,177 @@
+.contact {
+  padding: var(--section-pad) 0 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__content {
+  position: relative;
+  z-index: 1;
+}
+
+.contact__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* —— 左侧 —— */
+.contact__left {
+  position: sticky;
+  top: 120px;
+}
+
+.contact__availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 100px;
+}
+
+.contact__availability-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* —— 右侧联系卡片 —— */
+.contact__right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact__card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 32px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.4s var(--ease-out);
+  cursor: pointer;
+}
+
+.contact__card:hover {
+  background: var(--c-surface-hover);
+  border-color: rgba(255, 122, 48, 0.2);
+  transform: translateX(8px);
+}
+
+.contact__card-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: var(--c-gradient-warm-soft);
+  border: 1px solid rgba(255, 122, 48, 0.15);
+  color: var(--c-orange-light);
+  flex-shrink: 0;
+  transition: all 0.3s var(--ease-out);
+}
+
+.contact__card:hover .contact__card-icon {
+  background: var(--c-gradient-warm);
+  color: var(--c-bg);
+  border-color: transparent;
+}
+
+.contact__card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.contact__card-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  font-family: 'Space Grotesk', monospace;
+}
+
+.contact__card-type {
+  font-size: 13px;
+  color: var(--c-text-3);
+}
+
+.contact__card-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--c-text);
+  letter-spacing: -0.01em;
+}
+
+.contact__card-arrow {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--c-text-3);
+  transition: all 0.3s var(--ease-out);
+  flex-shrink: 0;
+}
+
+.contact__card:hover .contact__card-arrow {
+  background: var(--c-orange);
+  border-color: var(--c-orange);
+  color: var(--c-bg);
+  transform: rotate(45deg);
+}
+
+/* —— 底部光带 —— */
+.contact__glow {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255, 122, 48, 0.12) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* —— 响应式 —— */
+@media (max-width: 900px) {
+  .contact__wrap {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contact__left {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact__card {
+    padding: 20px;
+    gap: 14px;
+  }
+  .contact__card-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .contact__card-value {
+    font-size: 16px;
+  }
+}

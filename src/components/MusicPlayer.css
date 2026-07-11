@@ -1,0 +1,104 @@
+.music-player {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', monospace;
+  letter-spacing: 0.05em;
+  color: var(--c-text-2);
+  background: rgba(15, 12, 8, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  user-select: none;
+}
+
+.music-player:hover {
+  background: rgba(255, 122, 48, 0.12);
+  border-color: rgba(255, 122, 48, 0.3);
+  color: var(--c-orange-light);
+  transform: translateY(-2px);
+}
+
+.music-player:active {
+  transform: scale(0.95);
+}
+
+/* —— 音波动画 —— */
+.music-player__bars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 16px;
+}
+
+.music-player__bars span {
+  width: 3px;
+  height: 100%;
+  background: var(--c-orange-light);
+  border-radius: 2px;
+  animation: barWave 1s ease-in-out infinite;
+}
+
+.music-player__bars span:nth-child(1) { animation-delay: 0s; }
+.music-player__bars span:nth-child(2) { animation-delay: 0.2s; }
+.music-player__bars span:nth-child(3) { animation-delay: 0.4s; }
+.music-player__bars span:nth-child(4) { animation-delay: 0.1s; }
+
+@keyframes barWave {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.music-player--playing .music-player__bars span {
+  background: var(--c-orange);
+}
+
+/* —— 暂停状态图标 —— */
+.music-player__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--c-text-3);
+}
+
+.music-player--playing .music-player__icon {
+  color: var(--c-orange-light);
+}
+
+/* 未启动时脉冲提示 */
+.music-player--hint {
+  animation: musicHint 2s ease-in-out infinite;
+  border-color: rgba(255, 122, 48, 0.4);
+  color: var(--c-orange-light);
+}
+
+@keyframes musicHint {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 122, 48, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(255, 122, 48, 0); }
+}
+
+.music-player__label {
+  white-space: nowrap;
+}
+
+/* —— 响应式 —— */
+@media (max-width: 768px) {
+  .music-player {
+    bottom: 16px;
+    right: 16px;
+    padding: 6px 12px 6px 10px;
+    font-size: 11px;
+  }
+}

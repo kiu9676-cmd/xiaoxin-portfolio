@@ -1,0 +1,118 @@
+.footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(13, 10, 6, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  padding: 64px 0 48px;
+}
+
+/* —— 品牌 —— */
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__logo-mark {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--c-bg);
+  background: var(--c-gradient-warm);
+  border-radius: 8px;
+}
+
+.footer__logo-text {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.footer__tagline {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--c-text-3);
+  line-height: 1.6;
+}
+
+/* —— 导航列 —— */
+.footer__nav h5 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  margin-bottom: 16px;
+}
+
+.footer__nav a,
+.footer__nav span {
+  display: block;
+  font-size: 14px;
+  color: var(--c-text-2);
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.2s;
+}
+
+.footer__nav a:hover {
+  color: var(--c-orange-light);
+}
+
+.footer__nav-note {
+  color: var(--c-text-3) !important;
+}
+
+/* —— 底部 —— */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 13px;
+  color: var(--c-text-muted);
+}
+
+.footer__made {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer__heart {
+  color: var(--c-orange);
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* —— 响应式 —— */
+@media (max-width: 768px) {
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer__brand {
+    grid-column: span 2;
+  }
+  .footer__bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}

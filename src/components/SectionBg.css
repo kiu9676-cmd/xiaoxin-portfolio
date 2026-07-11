@@ -1,0 +1,181 @@
+/* ===== SectionBg 区域背景动效 =====
+   纯 CSS 光球浮动动画，暖色调，缓慢微妙
+   每个 variant 光球位置/大小/动画路径不同
+*/
+
+.section-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.section-bg__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  will-change: transform;
+}
+
+/* ============ experience 变体 ============
+   3 个光球：左上大橙、右中黄、底部金
+   动画路径各自不同，20-25s 周期 */
+.section-bg--experience .section-bg__orb--1 {
+  width: 480px;
+  height: 480px;
+  top: -120px;
+  left: -100px;
+  opacity: 0.22;
+  animation: orb-exp-1 24s ease-in-out infinite;
+}
+
+.section-bg--experience .section-bg__orb--2 {
+  width: 380px;
+  height: 380px;
+  top: 30%;
+  right: -80px;
+  opacity: 0.18;
+  animation: orb-exp-2 20s ease-in-out infinite;
+}
+
+.section-bg--experience .section-bg__orb--3 {
+  width: 420px;
+  height: 420px;
+  bottom: -140px;
+  left: 35%;
+  opacity: 0.16;
+  animation: orb-exp-3 22s ease-in-out infinite;
+}
+
+@keyframes orb-exp-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(80px, 60px) scale(1.1); }
+  66% { transform: translate(40px, 120px) scale(0.95); }
+}
+
+@keyframes orb-exp-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-100px, 80px) scale(1.15); }
+}
+
+@keyframes orb-exp-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40% { transform: translate(-60px, -80px) scale(1.08); }
+  70% { transform: translate(50px, -40px) scale(0.92); }
+}
+
+/* ============ works 变体 ============
+   2 个光球：右上橙、左下金黄
+   18-22s 周期，对角线漂移 */
+.section-bg--works .section-bg__orb--1 {
+  width: 520px;
+  height: 520px;
+  top: -140px;
+  right: -120px;
+  opacity: 0.2;
+  animation: orb-works-1 22s ease-in-out infinite;
+}
+
+.section-bg--works .section-bg__orb--2 {
+  width: 440px;
+  height: 440px;
+  bottom: -160px;
+  left: -100px;
+  opacity: 0.17;
+  animation: orb-works-2 18s ease-in-out infinite;
+}
+
+@keyframes orb-works-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-120px, 100px) scale(1.12); }
+}
+
+@keyframes orb-works-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(140px, -90px) scale(1.1); }
+}
+
+/* ============ interactive 变体 ============
+   3 个光球：中上金、左中橙、右下黄
+   15-23s 周期，三球交错浮动 */
+.section-bg--interactive .section-bg__orb--1 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: 40%;
+  opacity: 0.19;
+  animation: orb-int-1 23s ease-in-out infinite;
+}
+
+.section-bg--interactive .section-bg__orb--2 {
+  width: 360px;
+  height: 360px;
+  top: 45%;
+  left: -120px;
+  opacity: 0.17;
+  animation: orb-int-2 17s ease-in-out infinite;
+}
+
+.section-bg--interactive .section-bg__orb--3 {
+  width: 380px;
+  height: 380px;
+  bottom: -120px;
+  right: -80px;
+  opacity: 0.15;
+  animation: orb-int-3 20s ease-in-out infinite;
+}
+
+@keyframes orb-int-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-90px, 70px) scale(1.1); }
+}
+
+@keyframes orb-int-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(100px, -50px) scale(1.08); }
+  66% { transform: translate(60px, 80px) scale(0.95); }
+}
+
+@keyframes orb-int-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-70px, -100px) scale(1.12); }
+}
+
+/* ============ contact 变体 ============
+   2 个光球：右下大橙、左上金黄
+   19-25s 周期，呼应收尾的日落感 */
+.section-bg--contact .section-bg__orb--1 {
+  width: 540px;
+  height: 540px;
+  bottom: -180px;
+  right: -120px;
+  opacity: 0.21;
+  animation: orb-contact-1 25s ease-in-out infinite;
+}
+
+.section-bg--contact .section-bg__orb--2 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: 10%;
+  opacity: 0.16;
+  animation: orb-contact-2 19s ease-in-out infinite;
+}
+
+@keyframes orb-contact-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-100px, -80px) scale(1.12); }
+}
+
+@keyframes orb-contact-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(80px, 100px) scale(1.08); }
+}
+
+/* ===== 尊重无障碍：减少动画偏好 ===== */
+@media (prefers-reduced-motion: reduce) {
+  .section-bg__orb {
+    animation: none !important;
+  }
+}
