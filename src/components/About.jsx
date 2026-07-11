@@ -60,7 +60,7 @@ export default function About() {
       {/* —— 全局视频背景层 —— */}
       <div className="about__bg">
         <video ref={videoRef} className="about__bg-video" muted loop playsInline preload="none">
-          {videoLoaded && <source src="/videos/about-bg.mp4" type="video/mp4" />}
+          <source src="/videos/about-bg.mp4" type="video/mp4" />
         </video>
         <div className="about__bg-orb about__bg-orb--1" />
         <div className="about__bg-orb about__bg-orb--2" />
