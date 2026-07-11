@@ -9,6 +9,29 @@ const SKILLS = [
   { name: '后期与特效', level: 'AE · Premiere · DaVinci', icon: '✨' },
 ]
 
+const FEATURES = [
+  {
+    title: 'AI 驱动创作',
+    desc: '以 AI 为核心引擎，从概念到成片全流程智能化，效率提升 10 倍。',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+  },
+  {
+    title: '电影级叙事',
+    desc: '每一帧都经过精心设计，用电影语言讲述动人的故事。',
+    icon: 'M7 4V2h10v2h3v2l-2 14H6L4 6V4h3zM9 6v2h6V6H9z',
+  },
+  {
+    title: '风格多变',
+    desc: '从赛博朋克到水墨国风，从写实到二次元，驾驭多种视觉风格。',
+    icon: 'M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z',
+  },
+  {
+    title: '极速交付',
+    desc: '传统团队数周的项目，AI 工作流可在数天内高质量交付。',
+    icon: 'M13 2L3 14h7l-1 8 10-12h-7l1-8z',
+  },
+]
+
 export default function About() {
   const sectionRef = useRef(null)
   const videoRef = useRef(null)
@@ -95,6 +118,27 @@ export default function About() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+          {/* 右侧 —— 特性卡片 */}
+          <div className="about__features">
+            {FEATURES.map((feat, i) => (
+              <div
+                key={feat.title}
+                className="about__feature glass reveal"
+                data-reveal="right"
+                style={{ transitionDelay: `${i * 0.1}s` }}
+              >
+                <div className="about__feature-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d={feat.icon} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h4>{feat.title}</h4>
+                <p>{feat.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 

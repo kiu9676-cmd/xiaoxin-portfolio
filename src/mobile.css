@@ -230,6 +230,9 @@
 
 /* —— 角色介绍 —— */
 @media (max-width: 768px) {
+  .about__features {
+    display: none;
+  }
   .about__card {
     padding: 20px;
   }
