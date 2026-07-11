@@ -13,7 +13,7 @@
   padding: 20px var(--gutter);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 32px;
   transition: all 0.4s var(--ease-out);
 }
@@ -31,6 +31,8 @@
 
 /* —— Logo —— */
 .navbar__logo {
+  position: absolute;
+  left: var(--gutter);
   display: flex;
   align-items: center;
   gap: 10px;
