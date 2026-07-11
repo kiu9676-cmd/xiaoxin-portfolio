@@ -193,10 +193,8 @@ body::after {
 }
 
 /* —— 滚动条 —— */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--c-bg); }
-::-webkit-scrollbar-thumb { background: rgba(255, 122, 48, 0.3); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255, 122, 48, 0.5); }
+::-webkit-scrollbar { display: none; }
+html { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* —— 选区 —— */
 ::selection { background: rgba(255, 122, 48, 0.3); color: var(--c-white); }
