@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
+import logoAvatar from '../assets/avatar.png'
 import './Navbar.css'
-
-// 头像图片路径 —— 将图片放到 src/assets/ 目录下，取消下面注释并替换路径即可
-// import logoAvatar from '../assets/logo-avatar.png'
-const logoAvatar = null
 
 const NAV_ITEMS = [
   { id: 'about', label: '角色介绍', labelEn: 'About' },
