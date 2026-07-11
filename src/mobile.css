@@ -162,7 +162,7 @@
     font-family: inherit;
     border: none;
     cursor: pointer;
-    z-index: 30;
+    z-index: 10000;
   }
 }
 
@@ -219,7 +219,7 @@
     font-family: inherit;
     border: none;
     cursor: pointer;
-    z-index: 30;
+    z-index: 10000;
   }
 
   /* 放大查看 z-index */
