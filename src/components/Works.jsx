@@ -1,67 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import './Works.css'
 import SectionBg from './SectionBg'
+import content from '../data/content.json'
 
 const CATEGORIES = ['全部', 'AI漫剧', '短片']
+const WORKS = content.works
 
-const WORKS = [
-  {
-    id: 1,
-    title: '星河旅人',
-    category: 'AI漫剧',
-    type: 'video',
-    desc: '一段穿越星际的孤独旅程，用 AI 生成构建梦幻宇宙叙事',
-    detail: '本项目使用 Midjourney 生成概念设定，Runway Gen-2 生成动态画面，经 DaVinci Resolve 调色后合成。讲述了一位孤独的星际旅人在宇宙边缘收到过去信号的故事，融合赛博美学与哲学思考。',
-    tags: ['AI生成', '科幻', '4K'],
-    duration: '03:24',
-    gradient: 'linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)',
-    videoSrc: '/videos/xhlr.mp4',
-    posterSrc: '/images/posters/xhlr.jpg',
-    downloadSrc: '/videos/watermarked/xhlr.mp4',
-  },
-  {
-    id: 2,
-    title: '赛博之梦',
-    category: 'AI漫剧',
-    type: 'video',
-    desc: '霓虹城市的未来叙事，探讨人与AI的共生关系',
-    detail: '赛博朋克风格的 AI 漫剧短片。使用 Pika Labs 生成核心动态场景，配合 ChatGPT 辅助剧本创作。探讨了当 AI 拥有梦境后，它与人类记忆之间模糊的边界。',
-    tags: ['赛博朋克', '叙事', '8K'],
-    duration: '05:12',
-    gradient: 'linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF6B35 100%)',
-    videoSrc: '/videos/赛博.mp4',
-    posterSrc: '/images/posters/赛博.jpg',
-    downloadSrc: '/videos/watermarked/赛博.mp4',
-  },
-  {
-    id: 3,
-    title: '深海回响',
-    category: 'AI漫剧',
-    type: 'video',
-    desc: '深海世界的神秘探索，AI生成构建水下奇观',
-    detail: '深海奇幻题材 AI 漫剧。以 Kling AI 生成水下动态场景，构建了一个沉睡千年后苏醒的深海古城。主角"渊"作为最后一位海语者，肩负起传承海族记忆的使命。',
-    tags: ['奇幻', '水下', 'IMAX'],
-    duration: '04:08',
-    gradient: 'linear-gradient(135deg, #06141d 0%, #1a4a5e 40%, #FFB347 100%)',
-    videoSrc: '/videos/深海.mp4',
-    posterSrc: '/images/posters/深海.jpg',
-    downloadSrc: '/videos/watermarked/深海.mp4',
-  },
-  {
-    id: 4,
-    title: '光阴之间',
-    category: '短片',
-    type: 'video',
-    desc: '时间流转的视觉诗篇，从黎明到黄昏的光影叙事',
-    detail: '实验性短片作品。以"时间"为唯一主角，通过 AI 生成不同时段的光影变化，配合原创音乐，呈现从黎明到黄昏的一日光影流转。无对白纯视觉叙事。',
-    tags: ['实验', '光影', '6K'],
-    duration: '02:45',
-    gradient: 'linear-gradient(135deg, #1e1208 0%, #7a5c2e 40%, #FFE9A8 100%)',
-    videoSrc: '/videos/光阴.mp4',
-    posterSrc: '/images/posters/光阴.jpg',
-    downloadSrc: '/videos/watermarked/光阴.mp4',
-  },
-]
 
 export default function Works() {
   const [filter, setFilter] = useState('全部')

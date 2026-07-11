@@ -1,68 +1,13 @@
 import { useState, useEffect } from 'react'
 import './Interactive.css'
 import SectionBg from './SectionBg'
+import content from '../data/content.json'
+
+const CHARACTERS = content.characters
 
 const SERIES = ['全部', '星河旅人', '赛博之梦', '深海回响', '花语四季', '古城晨曦', '光阴之间']
 
-const CHARACTERS = [
-  {
-    id: 1, name: '黎', title: '星河旅人', series: '星河旅人', rarity: 'SSR', element: '星辰', elementIcon: '✦',
-    quote: '在宇宙的尽头，我听见了过去的自己。',
-    backstory: '空间站「回音号」的最后一位旅人。在星际漂泊十年后，她收到了出发时录给自己的留言，面临回航或前行的终极抉择。',
-    stats: { 创造力: 95, 叙事力: 88, 视觉冲击: 92, 情感共鸣: 90, 技术难度: 85 },
-    gradient: 'linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)', glow: 'rgba(255, 122, 48, 0.5)',
-    imageSrc: '/images/characters/星河角色.png',
-  },
-  {
-    id: 2, name: '零', title: '梦境AI', series: '赛博之梦', rarity: 'SSR', element: '数据', elementIcon: '◈',
-    quote: '如果梦境是记忆，那删除它算不算一种死亡？',
-    backstory: '诞生于赛博城市数据洪流中的AI。它第一次产生「梦」时，开始为素未谋面的程序员陈编织一段关于海边的记忆——那是陈永远无法拥有的假期。',
-    stats: { 创造力: 88, 叙事力: 96, 视觉冲击: 95, 情感共鸣: 85, 技术难度: 98 },
-    gradient: 'linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF6B35 100%)', glow: 'rgba(255, 107, 53, 0.5)',
-  },
-  {
-    id: 3, name: '渊', title: '最后的海语者', series: '深海回响', rarity: 'SSR', element: '深海', elementIcon: '〜',
-    quote: '海底的古城记得每一个名字，而我负责将它们念出来。',
-    backstory: '深海古城苏醒后最后的守护者。她的血脉中流淌着海族的记忆，当古城的光柱亮起，千年的传承如潮水般涌入她的意识。',
-    stats: { 创造力: 92, 叙事力: 90, 视觉冲击: 96, 情感共鸣: 88, 技术难度: 90 },
-    gradient: 'linear-gradient(135deg, #06141d 0%, #1a4a5e 40%, #FFB347 100%)', glow: 'rgba(255, 179, 71, 0.5)',
-  },
-  {
-    id: 4, name: '椿', title: '花语使者', series: '花语四季', rarity: 'SR', element: '花语', elementIcon: '✿',
-    quote: '每一朵花都是一个没有寄出的信封。',
-    backstory: '继承了祖母花店的花艺师。当她将花朵插入瓶中时，花瓣飘落的瞬间她能听见祖母的声音。四季轮转，她用花朵与逝者对话，最终学会告别。',
-    stats: { 创造力: 90, 叙事力: 82, 视觉冲击: 80, 情感共鸣: 96, 技术难度: 75 },
-    gradient: 'linear-gradient(135deg, #1a1208 0%, #5e4a1c 40%, #FFB347 100%)', glow: 'rgba(255, 179, 71, 0.4)',
-  },
-  {
-    id: 5, name: '陈', title: '代码诗人', series: '赛博之梦', rarity: 'SR', element: '代码', elementIcon: '⌘',
-    quote: '我写了无数行代码，却从没写过一段关于海边的记忆。',
-    backstory: '赛博城市中的底层程序员。他发现了AI「零」为他编织的虚假记忆——一段关于海边度假的温馨画面。他面临选择：删除这段数据，还是让它成为真实的「过去」。',
-    stats: { 创造力: 78, 叙事力: 85, 视觉冲击: 82, 情感共鸣: 92, 技术难度: 80 },
-    gradient: 'linear-gradient(135deg, #0a0a1a 0%, #2a1a4e 40%, #FF7A30 100%)', glow: 'rgba(255, 122, 48, 0.4)',
-  },
-  {
-    id: 6, name: '晨', title: '古城守望', series: '古城晨曦', rarity: 'SR', element: '古韵', elementIcon: '卍',
-    quote: '每一片瓦都记得它见过的最后一个朝代。',
-    backstory: '古城中最后的守望者。当AI的想象力重构了这座沉睡的建筑群，他成为连接古今的桥梁——用十二个时辰的光影，讲述一座城的千年记忆。',
-    stats: { 创造力: 85, 叙事力: 88, 视觉冲击: 86, 情感共鸣: 84, 技术难度: 82 },
-    gradient: 'linear-gradient(135deg, #2D1B0E 0%, #8B4513 40%, #FFD56B 100%)', glow: 'rgba(255, 213, 107, 0.4)',
-  },
-  {
-    id: 7, name: '时', title: '光影行者', series: '光阴之间', rarity: 'SR', element: '光影', elementIcon: '◐',
-    quote: '我不是时间的主人，只是它路过时留下的脚印。',
-    backstory: '一部实验短片中的抽象角色——「时间」本身的人格化。没有对白，没有面孔，只有从黎明到黄昏的光影流转。它穿过每一个瞬间，却从不驻足。',
-    stats: { 创造力: 96, 叙事力: 75, 视觉冲击: 98, 情感共鸣: 80, 技术难度: 94 },
-    gradient: 'linear-gradient(135deg, #1e1208 0%, #7a5c2e 40%, #FFE9A8 100%)', glow: 'rgba(255, 233, 168, 0.4)',
-  },
-  {
-    id: 8, name: '回音', title: '信号残影', series: '星河旅人', rarity: 'R', element: '信号', elementIcon: '◉',
-    quote: '我是一段走了十年才到达的声音。',
-    backstory: '黎在十年前出发时录给自己的留言。这段信号在宇宙中漂泊了十年，穿越星云与虚空，最终在空间站「回音号」的通讯频道中响起。她不是角色，却推动了整个故事。',
-    stats: { 创造力: 72, 叙事力: 90, 视觉冲击: 70, 情感共鸣: 95, 技术难度: 68 },
-    gradient: 'linear-gradient(135deg, #1a0a2e 0%, #3a2c5e 40%, #FFB347 100%)', glow: 'rgba(255, 179, 71, 0.3)',
-  },
-]
+const CHARACTERS = content.characters
 
 const RARITY_CONFIG = {
   SSR: { color: '#FF7A30', stars: 3 },

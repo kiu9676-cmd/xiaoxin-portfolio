@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XiaoXin 后台管理</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #0D0A06; color: #fff; min-height: 100vh; }
+.header { background: linear-gradient(135deg, #FF7A30, #FFB347); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.header h1 { font-size: 24px; color: #fff; }
+.header-actions { display: flex; gap: 12px; }
+.btn { padding: 10px 24px; border: none; border-radius: 100px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; }
+.btn-save { background: rgba(255,255,255,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+.btn-save:hover { background: rgba(255,255,255,0.3); }
+.btn-push { background: #fff; color: #FF7A30; }
+.btn-push:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.btn-push:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+.tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+.tab { padding: 10px 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; color: #aaa; cursor: pointer; font-size: 14px; transition: all 0.3s; font-family: inherit; }
+.tab.active { background: var(--c-orange, #FF7A30); color: #fff; border-color: transparent; }
+.tab:hover { border-color: rgba(255,122,48,0.3); }
+.panel { display: none; }
+.panel.active { display: block; }
+.field { margin-bottom: 20px; }
+.field label { display: block; font-size: 13px; color: #FFB347; margin-bottom: 6px; font-weight: 600; }
+.field input, .field textarea, .field select { width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #fff; font-size: 14px; font-family: inherit; outline: none; transition: border 0.3s; }
+.field input:focus, .field textarea:focus { border-color: #FF7A30; }
+.field textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
+.card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.card-header h3 { font-size: 16px; color: #FF7A30; }
+.btn-add { padding: 8px 16px; background: rgba(255,122,48,0.15); border: 1px solid rgba(255,122,48,0.3); border-radius: 8px; color: #FF7A30; cursor: pointer; font-size: 13px; font-family: inherit; }
+.btn-add:hover { background: rgba(255,122,48,0.25); }
+.btn-del { padding: 4px 12px; background: rgba(255,68,68,0.15); border: 1px solid rgba(255,68,68,0.3); border-radius: 6px; color: #ff6464; cursor: pointer; font-size: 12px; font-family: inherit; }
+.btn-del:hover { background: rgba(255,68,68,0.25); }
+.tags-input { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px; min-height: 44px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; }
+.tag-chip { padding: 4px 10px; background: rgba(255,122,48,0.2); border-radius: 6px; font-size: 12px; display: flex; align-items: center; gap: 4px; }
+.tag-chip span { cursor: pointer; opacity: 0.7; }
+.tag-chip span:hover { opacity: 1; }
+.tag-input { background: transparent; border: none; color: #fff; font-size: 13px; outline: none; min-width: 80px; font-family: inherit; }
+.toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); padding: 14px 32px; border-radius: 100px; font-size: 14px; font-weight: 600; z-index: 999; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.toast.show { opacity: 1; }
+.toast.success { background: rgba(46,204,113,0.95); color: #fff; }
+.toast.error { background: rgba(231,76,60,0.95); color: #fff; }
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>XiaoXin 后台管理</h1>
+  <div class="header-actions">
+    <button class="btn btn-save" onclick="saveContent()">保存修改</button>
+    <button class="btn btn-push" id="pushBtn" onclick="pushToGitHub()">推送到GitHub</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('contact')">联系方式</button>
+    <button class="tab" onclick="switchTab('about')">角色介绍</button>
+    <button class="tab" onclick="switchTab('works')">作品案例</button>
+    <button class="tab" onclick="switchTab('characters')">角色卡牌</button>
+  </div>
+
+  <!-- 联系方式 -->
+  <div class="panel active" id="panel-contact">
+    <div class="card">
+      <h3 style="margin-bottom:16px;color:#FF7A30">联系方式</h3>
+      <div class="info-grid">
+        <div class="field"><label>电话</label><input id="contact-phone" /></div>
+        <div class="field"><label>邮箱</label><input id="contact-email" /></div>
+        <div class="field"><label>微信</label><input id="contact-wechat" /></div>
+        <div class="field"><label>网站名称</label><input id="site-name" /></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 角色介绍 -->
+  <div class="panel" id="panel-about">
+    <div class="card">
+      <h3 style="margin-bottom:16px;color:#FF7A30">角色介绍</h3>
+      <div class="field"><label>标题（上半句）</label><input id="about-title" /></div>
+      <div class="field"><label>标题（下半句高亮）</label><input id="about-titleAccent" /></div>
+      <div class="field"><label>简介</label><textarea id="about-desc"></textarea></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><h3>技能列表</h3></div>
+      <div id="about-skills"></div>
+    </div>
+  </div>
+
+  <!-- 作品案例 -->
+  <div class="panel" id="panel-works">
+    <div class="card-header"><h3>作品列表</h3><button class="btn-add" onclick="addWork()">+ 添加作品</button></div>
+    <div id="works-list"></div>
+  </div>
+
+  <!-- 角色卡牌 -->
+  <div class="panel" id="panel-characters">
+    <div class="card-header"><h3>角色列表</h3><button class="btn-add" onclick="addCharacter()">+ 添加角色</button></div>
+    <div id="characters-list"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let content = {}
+
+async function loadContent() {
+  const res = await fetch('/api/content')
+  content = await res.json()
+  renderAll()
+}
+
+function renderAll() {
+  // 联系方式
+  document.getElementById('contact-phone').value = content.contact.phone
+  document.getElementById('contact-email').value = content.contact.email
+  document.getElementById('contact-wechat').value = content.contact.wechat
+  document.getElementById('site-name').value = content.siteName
+
+  // 角色介绍
+  document.getElementById('about-title').value = content.about.title
+  document.getElementById('about-titleAccent').value = content.about.titleAccent
+  document.getElementById('about-desc').value = content.about.desc
+  renderSkills()
+
+  // 作品
+  renderWorks()
+  // 角色
+  renderCharacters()
+}
+
+function renderSkills() {
+  const c = document.getElementById('about-skills')
+  c.innerHTML = content.about.skills.map((s, i) => `
+    <div class="card" style="margin-bottom:12px">
+      <div class="info-grid">
+        <div class="field"><label>图标</label><input value="${s.icon}" onchange="content.about.skills[${i}].icon=this.value" /></div>
+        <div class="field"><label>名称</label><input value="${s.name}" onchange="content.about.skills[${i}].name=this.value" /></div>
+      </div>
+      <div class="field"><label>详情</label><input value="${s.level}" onchange="content.about.skills[${i}].level=this.value" /></div>
+    </div>
+  `).join('')
+}
+
+function renderWorks() {
+  const c = document.getElementById('works-list')
+  c.innerHTML = content.works.map((w, i) => `
+    <div class="card">
+      <div class="card-header">
+        <h3>作品 #${i+1}</h3>
+        <button class="btn-del" onclick="content.works.splice(${i},1);renderWorks()">删除</button>
+      </div>
+      <div class="info-grid">
+        <div class="field"><label>标题</label><input value="${w.title}" onchange="content.works[${i}].title=this.value" /></div>
+        <div class="field"><label>分类</label><select onchange="content.works[${i}].category=this.value">
+          <option ${w.category==='AI漫剧'?'selected':''}>AI漫剧</option>
+          <option ${w.category==='短片'?'selected':''}>短片</option>
+        </select></div>
+        <div class="field"><label>时长</label><input value="${w.duration||''}" onchange="content.works[${i}].duration=this.value" /></div>
+        <div class="field"><label>视频路径</label><input value="${w.videoSrc||''}" onchange="content.works[${i}].videoSrc=this.value" /></div>
+        <div class="field"><label>封面图路径</label><input value="${w.posterSrc||''}" onchange="content.works[${i}].posterSrc=this.value" /></div>
+        <div class="field"><label>下载路径(水印)</label><input value="${w.downloadSrc||''}" onchange="content.works[${i}].downloadSrc=this.value" /></div>
+      </div>
+      <div class="field"><label>简介</label><input value="${w.desc}" onchange="content.works[${i}].desc=this.value" /></div>
+      <div class="field"><label>详细描述</label><textarea onchange="content.works[${i}].detail=this.value">${w.detail}</textarea></div>
+      <div class="field"><label>标签（逗号分隔）</label><input value="${(w.tags||[]).join(', ')}" onchange="content.works[${i}].tags=this.value.split(',').map(t=>t.trim()).filter(Boolean)" /></div>
+    </div>
+  `).join('')
+}
+
+function renderCharacters() {
+  const c = document.getElementById('characters-list')
+  c.innerHTML = content.characters.map((ch, i) => `
+    <div class="card">
+      <div class="card-header">
+        <h3>角色 #${i+1}: ${ch.name}</h3>
+        <button class="btn-del" onclick="content.characters.splice(${i},1);renderCharacters()">删除</button>
+      </div>
+      <div class="info-grid">
+        <div class="field"><label>名字</label><input value="${ch.name}" onchange="content.characters[${i}].name=this.value" /></div>
+        <div class="field"><label>称号</label><input value="${ch.title}" onchange="content.characters[${i}].title=this.value" /></div>
+        <div class="field"><label>系列</label><input value="${ch.series}" onchange="content.characters[${i}].series=this.value" /></div>
+        <div class="field"><label>元素</label><input value="${ch.element}" onchange="content.characters[${i}].element=this.value" /></div>
+        <div class="field"><label>图片路径</label><input value="${ch.imageSrc||''}" onchange="content.characters[${i}].imageSrc=this.value||null" /></div>
+      </div>
+      <div class="field"><label>人设故事</label><textarea onchange="content.characters[${i}].backstory=this.value">${ch.backstory}</textarea></div>
+      <div class="field"><label>经典台词</label><input value="${ch.quote}" onchange="content.characters[${i}].quote=this.value" /></div>
+    </div>
+  `).join('')
+}
+
+function addWork() {
+  content.works.push({
+    id: Date.now(), title: '新作品', category: 'AI漫剧', type: 'video',
+    desc: '', detail: '', tags: [], duration: '', gradient: 'linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)',
+    videoSrc: '', posterSrc: '', downloadSrc: ''
+  })
+  renderWorks()
+}
+
+function addCharacter() {
+  content.characters.push({
+    id: Date.now(), name: '新角色', title: '称号', series: '系列', element: '元素', elementIcon: '✦',
+    backstory: '', quote: '', gradient: 'linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)',
+    glow: 'rgba(255, 122, 48, 0.5)', imageSrc: null
+  })
+  renderCharacters()
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'))
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'))
+  event.target.classList.add('active')
+  document.getElementById('panel-' + name).classList.add('active')
+}
+
+// 从表单收集数据
+function collectData() {
+  content.contact.phone = document.getElementById('contact-phone').value
+  content.contact.email = document.getElementById('contact-email').value
+  content.contact.wechat = document.getElementById('contact-wechat').value
+  content.siteName = document.getElementById('site-name').value
+  content.about.title = document.getElementById('about-title').value
+  content.about.titleAccent = document.getElementById('about-titleAccent').value
+  content.about.desc = document.getElementById('about-desc').value
+}
+
+async function saveContent() {
+  collectData()
+  try {
+    const res = await fetch('/api/content', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(content)
+    })
+    const data = await res.json()
+    showToast(data.message, data.success ? 'success' : 'error')
+  } catch (e) {
+    showToast('保存失败: ' + e.message, 'error')
+  }
+}
+
+async function pushToGitHub() {
+  collectData()
+  const btn = document.getElementById('pushBtn')
+  btn.disabled = true
+  btn.textContent = '推送中...'
+
+  // 先保存
+  try {
+    await fetch('/api/content', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(content)
+    })
+  } catch(e) {}
+
+  // 再推送
+  try {
+    const res = await fetch('/api/push', { method: 'POST' })
+    const data = await res.json()
+    showToast(data.message, data.success ? 'success' : 'error')
+  } catch (e) {
+    showToast('推送失败: ' + e.message, 'error')
+  }
+  btn.disabled = false
+  btn.textContent = '推送到GitHub'
+}
+
+function showToast(msg, type) {
+  const t = document.getElementById('toast')
+  t.textContent = msg
+  t.className = 'toast show ' + type
+  setTimeout(() => t.className = 'toast ' + type, 3000)
+}
+
+loadContent()
+</script>
+</body>
+</html>
