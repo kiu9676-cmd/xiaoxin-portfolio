@@ -226,6 +226,42 @@
   .carddex__zoom-overlay {
     z-index: 99999 !important;
   }
+
+  /* 放大返回栏 —— 仅手机端 */
+  .carddex__zoom-back {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    padding: 0 20px;
+    background: rgba(255, 122, 48, 0.95);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    z-index: 10000;
+  }
+
+  /* 角色弹窗尺寸和视频弹窗一致 */
+  .carddex__modal {
+    max-width: 100% !important;
+    max-height: 100vh !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    padding-top: 50px;
+  }
+  .carddex__modal-actions {
+    flex-direction: column;
+  }
+  .carddex__modal-btn {
+    justify-content: center;
+  }
 }
 
 /* —— 角色介绍 —— */

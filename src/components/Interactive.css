@@ -226,7 +226,7 @@
 .carddex__modal {
   position: relative;
   width: 100%;
-  max-width: 720px;
+  max-width: 1200px;
   max-height: 80vh;
   display: flex;
   overflow: hidden;
@@ -518,6 +518,55 @@
   top: -4px;
   left: 10px;
   font-style: normal;
+}
+
+/* —— 按钮区 —— */
+.carddex__modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.carddex__modal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+}
+
+.carddex__modal-btn--primary {
+  color: var(--c-bg);
+  background: var(--c-gradient-warm);
+  box-shadow: 0 4px 16px rgba(255, 122, 48, 0.25);
+}
+
+.carddex__modal-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 122, 48, 0.4);
+}
+
+.carddex__modal-btn--ghost {
+  color: var(--c-text);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.carddex__modal-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* —— 放大返回栏 —— */
+.carddex__zoom-back {
+  display: none;
 }
 
 /* —— 响应式 —— */

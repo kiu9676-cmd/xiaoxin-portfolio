@@ -230,6 +230,28 @@ export default function Interactive() {
                 <span className="carddex__quote-mark">"</span>
                 {selected.quote}
               </div>
+
+              <div className="carddex__modal-actions">
+                <button
+                  className="carddex__modal-btn carddex__modal-btn--primary"
+                  onClick={() => {
+                    if (selected.imageSrc) {
+                      const a = document.createElement('a')
+                      a.href = selected.imageSrc
+                      a.download = `${selected.name}.png`
+                      a.click()
+                    }
+                  }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  下载素材
+                </button>
+                <button className="carddex__modal-btn carddex__modal-btn--ghost" onClick={() => setSelected(null)}>
+                  返回
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -238,6 +260,12 @@ export default function Interactive() {
       {/* —— 角色图全屏放大 —— */}
       {zoomed && selected?.imageSrc && (
         <div className="carddex__zoom-overlay" onClick={() => setZoomed(false)}>
+          <button className="carddex__zoom-back" onClick={() => setZoomed(false)}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            返回
+          </button>
           <button className="carddex__zoom-close" onClick={() => setZoomed(false)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
