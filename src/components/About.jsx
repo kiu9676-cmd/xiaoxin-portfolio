@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import avatarImg from '../assets/avatar.png'
 import './About.css'
 
@@ -9,12 +10,37 @@ const SKILLS = [
 ]
 
 export default function About() {
+  const sectionRef = useRef(null)
+  const videoRef = useRef(null)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+
+  // 懒加载：滚动到 About 区域才加载背景视频
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !videoLoaded) {
+          setVideoLoaded(true)
+          // 延迟加载视频，让其他资源先加载
+          setTimeout(() => {
+            if (videoRef.current) {
+              videoRef.current.load()
+              videoRef.current.play().catch(() => {})
+            }
+          }, 1500)
+        }
+      },
+      { rootMargin: '200px' }
+    )
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [videoLoaded])
+
   return (
-    <section id="about" className="about">
+    <section id="about" className="about" ref={sectionRef}>
       {/* —— 全局视频背景层 —— */}
       <div className="about__bg">
-        <video className="about__bg-video" autoPlay muted loop playsInline>
-          <source src="/videos/about-bg.mp4" type="video/mp4" />
+        <video ref={videoRef} className="about__bg-video" muted loop playsInline preload="none">
+          {videoLoaded && <source src="/videos/about-bg.mp4" type="video/mp4" />}
         </video>
         <div className="about__bg-orb about__bg-orb--1" />
         <div className="about__bg-orb about__bg-orb--2" />

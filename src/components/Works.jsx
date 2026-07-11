@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import './Works.css'
 import SectionBg from './SectionBg'
+import LazyVideo from './LazyVideo'
 
 const CATEGORIES = ['全部', 'AI漫剧', '短片']
 
@@ -137,14 +138,10 @@ export default function Works() {
         >
           <div className="works__featured-bg" style={{ background: featuredWork.gradient }}>
             {featuredWork.videoSrc && (
-              <video
+              <LazyVideo
                 className="works__featured-video"
                 src={featuredWork.videoSrc}
-                preload="metadata"
-                muted
                 loop
-                autoPlay
-                playsInline
               />
             )}
             <div className="works__featured-overlay" />
@@ -209,14 +206,11 @@ export default function Works() {
                 style={{ background: work.gradient }}
                 onClick={() => setSelected(work)}
               >
-                {/* 视频缩略图 */}
+                {/* 视频缩略图 —— 懒加载 */}
                 {work.videoSrc && (
-                  <video
+                  <LazyVideo
                     className="works__visual-video"
                     src={work.videoSrc}
-                    preload="metadata"
-                    muted
-                    playsInline
                   />
                 )}
 

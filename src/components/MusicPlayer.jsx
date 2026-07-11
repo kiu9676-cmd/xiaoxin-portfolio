@@ -53,7 +53,7 @@ export default function MusicPlayer() {
 
   return (
     <>
-      <audio ref={audioRef} src="/audio/BGM.mp3" loop preload="auto" />
+      <audio ref={audioRef} src="/audio/BGM.mp3" loop preload="none" />
       <button
         className={`music-player ${playing ? 'music-player--playing' : ''}`}
         onClick={toggle}
