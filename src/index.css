@@ -35,8 +35,8 @@
   --c-gradient-warm-soft: linear-gradient(135deg, rgba(255, 122, 48, 0.15) 0%, rgba(255, 213, 107, 0.08) 100%);
 
   /* —— 字体 —— */
-  --font-sans: 'Space Grotesk', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
-  --font-cn: 'Noto Sans SC', system-ui, sans-serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+  --font-cn: system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 
   /* —— 间距与尺寸 —— */
   --max-width: 1920px;
