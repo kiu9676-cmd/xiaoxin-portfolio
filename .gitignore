@@ -3,3 +3,7 @@ dist
 .backup
 *.log
 .DS_Store
+public/videos/original
+public/audio/original
+ffmpeg.exe
+compress.cjs
