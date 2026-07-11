@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import './Works.css'
 import SectionBg from './SectionBg'
-import LazyVideo from './LazyVideo'
 
 const CATEGORIES = ['全部', 'AI漫剧', '短片']
 
@@ -17,6 +16,7 @@ const WORKS = [
     duration: '03:24',
     gradient: 'linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)',
     videoSrc: '/videos/xhlr.mp4',
+    posterSrc: '/images/posters/xhlr.jpg',
   },
   {
     id: 2,
@@ -29,6 +29,7 @@ const WORKS = [
     duration: '05:12',
     gradient: 'linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF6B35 100%)',
     videoSrc: '/videos/赛博.mp4',
+    posterSrc: '/images/posters/赛博.jpg',
   },
   {
     id: 3,
@@ -41,6 +42,7 @@ const WORKS = [
     duration: '04:08',
     gradient: 'linear-gradient(135deg, #06141d 0%, #1a4a5e 40%, #FFB347 100%)',
     videoSrc: '/videos/深海.mp4',
+    posterSrc: '/images/posters/深海.jpg',
   },
   {
     id: 4,
@@ -53,6 +55,7 @@ const WORKS = [
     duration: '02:45',
     gradient: 'linear-gradient(135deg, #1e1208 0%, #7a5c2e 40%, #FFE9A8 100%)',
     videoSrc: '/videos/光阴.mp4',
+    posterSrc: '/images/posters/光阴.jpg',
   },
 ]
 
@@ -137,12 +140,8 @@ export default function Works() {
           onMouseLeave={() => setAutoPlay(true)}
         >
           <div className="works__featured-bg" style={{ background: featuredWork.gradient }}>
-            {featuredWork.videoSrc && (
-              <LazyVideo
-                className="works__featured-video"
-                src={featuredWork.videoSrc}
-                loop
-              />
+            {featuredWork.posterSrc && (
+              <img className="works__featured-video" src={featuredWork.posterSrc} alt={featuredWork.title} />
             )}
             <div className="works__featured-overlay" />
           </div>
@@ -206,12 +205,9 @@ export default function Works() {
                 style={{ background: work.gradient }}
                 onClick={() => setSelected(work)}
               >
-                {/* 视频缩略图 —— 懒加载 */}
-                {work.videoSrc && (
-                  <LazyVideo
-                    className="works__visual-video"
-                    src={work.videoSrc}
-                  />
+                {/* 封面图 —— 用图片代替视频，秒加载 */}
+                {work.posterSrc && (
+                  <img className="works__visual-video" src={work.posterSrc} alt={work.title} />
                 )}
 
                 {/* 噪点纹理 */}
@@ -308,6 +304,7 @@ export default function Works() {
                 <video
                   className="works__modal-video"
                   src={selected.videoSrc}
+                  poster={selected.posterSrc}
                   controls
                   autoPlay
                   loop
