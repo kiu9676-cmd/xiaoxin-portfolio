@@ -193,8 +193,10 @@ body::after {
 }
 
 /* —— 滚动条 —— */
-::-webkit-scrollbar { display: none; }
-html { -ms-overflow-style: none; scrollbar-width: none; }
+/* 隐藏所有滚动条 */
+*::-webkit-scrollbar { display: none !important; }
+* { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+html, body { overflow: auto; }
 
 /* —— 选区 —— */
 ::selection { background: rgba(255, 122, 48, 0.3); color: var(--c-white); }
