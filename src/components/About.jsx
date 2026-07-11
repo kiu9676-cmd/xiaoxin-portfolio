@@ -119,7 +119,6 @@ export default function About() {
               ))}
             </div>
           </div>
-        </div>
 
           {/* 右侧 —— 特性卡片 */}
           <div className="about__features">
