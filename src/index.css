@@ -154,8 +154,6 @@ body::after {
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-top: 24px;
-  word-break: keep-all;
-  overflow-wrap: break-word;
 }
 
 .section-title .accent {
@@ -194,16 +192,11 @@ body::after {
   transform: translateY(0);
 }
 
-/* —— 滚动条 —— PC端显示，手机端隐藏 */
+/* —— 滚动条 —— */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--c-bg); }
 ::-webkit-scrollbar-thumb { background: rgba(255, 122, 48, 0.3); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(255, 122, 48, 0.5); }
-
-@media (max-width: 768px) {
-  ::-webkit-scrollbar { display: none; }
-  html { -ms-overflow-style: none; scrollbar-width: none; }
-}
 
 /* —— 选区 —— */
 ::selection { background: rgba(255, 122, 48, 0.3); color: var(--c-white); }
@@ -272,10 +265,5 @@ button:active { transform: scale(0.96) !important; transition: transform 0.1s ea
 
 /* —— 响应式 —— */
 @media (max-width: 768px) {
-  :root { --section-pad: 40px; --gutter: 16px; }
-  .section-desc { display: none; }
-  .section-tag { font-size: 10px; padding: 4px 10px; }
-  .section-title { font-size: 22px; margin-top: 12px; }
-  .container { padding-left: 14px; padding-right: 14px; }
-  img, video, svg { max-width: 100%; }
+  :root { --section-pad: 64px; }
 }

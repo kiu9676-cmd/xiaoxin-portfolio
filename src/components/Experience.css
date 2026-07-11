@@ -292,19 +292,17 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  z-index: 10;
-  width: 44px;
-  height: 44px;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(255, 122, 48, 0.9);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: var(--c-white);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--c-text-2);
   cursor: pointer;
   transition: all 0.3s var(--ease-spring);
-  box-shadow: 0 4px 20px rgba(255, 122, 48, 0.4);
 }
 
 .experience__modal-close:hover {
@@ -394,50 +392,33 @@
 
 /* —— 响应式 —— */
 @media (max-width: 768px) {
-  .experience { display: none; }
-}
   .experience__3d-stage {
-    height: 200px;
-    perspective: 600px;
-    overflow: hidden;
+    height: 300px;
+    perspective: 900px;
   }
   .experience__3d-rotor {
-    width: 200px;
-    height: 150px;
+    width: 270px;
+    height: 220px;
   }
   .experience__3d-card {
-    width: 200px;
-    height: 150px;
-    --card-z: 200px;
+    width: 270px;
+    height: 220px;
+    --card-z: 380px;
   }
   .experience__card-top,
   .experience__period,
   .experience__short {
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: 22px;
+    padding-right: 22px;
   }
   .experience__card-footer {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-  .experience__company {
-    font-size: 16px;
-  }
-  .experience__position {
-    font-size: 12px;
-  }
-  .experience__short {
-    font-size: 12px;
-  }
-  .experience__logo {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
+    padding-left: 22px;
+    padding-right: 22px;
   }
   .experience__modal {
-    padding: 20px;
+    padding: 24px;
   }
   .experience__modal-company {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
