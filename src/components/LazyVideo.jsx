@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
  * 懒加载视频组件
  * - 默认不加载任何视频数据
  * - 滚动到可视区域时才加载 metadata（首帧）
- * - 可选：进入可视区域后自动播放
+ * - 加载完成后自动显示第一帧画面
  */
 export default function LazyVideo({ src, className, autoPlayOnView = false, muted = true, loop = false, playsInline = true }) {
   const ref = useRef(null)
@@ -18,18 +18,34 @@ export default function LazyVideo({ src, className, autoPlayOnView = false, mute
       (entries) => {
         if (entries[0].isIntersecting) {
           setShouldLoad(true)
-          if (autoPlayOnView) {
-            el.play().catch(() => {})
-          }
           observer.disconnect()
         }
       },
-      { rootMargin: '100px' }
+      { rootMargin: '200px' }
     )
 
     observer.observe(el)
     return () => observer.disconnect()
-  }, [autoPlayOnView])
+  }, [])
+
+  // 加载完成后显示首帧
+  useEffect(() => {
+    const el = ref.current
+    if (!el || !shouldLoad) return
+
+    const onLoadedData = () => {
+      // 确保显示第一帧
+      try {
+        el.currentTime = 0
+      } catch (e) {}
+      if (autoPlayOnView) {
+        el.play().catch(() => {})
+      }
+    }
+
+    el.addEventListener('loadeddata', onLoadedData)
+    return () => el.removeEventListener('loadeddata', onLoadedData)
+  }, [shouldLoad, autoPlayOnView])
 
   return (
     <video
