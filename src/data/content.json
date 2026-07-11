@@ -11,10 +11,26 @@
     "titleAccent": "故事的导演",
     "desc": "我是 XiaoXin，一名 AI 漫剧制作师。用人工智能技术重新定义视觉叙事，将想象力转化为可感知的影像艺术。每一部作品，都是技术与创意的精密交汇。",
     "skills": [
-      { "name": "AI 绘画生成", "level": "Midjourney · Stable Diffusion · DALL·E", "icon": "🎨" },
-      { "name": "AI 视频制作", "level": "Runway · Pika · Sora · Kling", "icon": "🎬" },
-      { "name": "剧本与分镜", "level": "ChatGPT · Claude · 故事架构", "icon": "✍️" },
-      { "name": "后期与特效", "level": "AE · Premiere · DaVinci", "icon": "✨" }
+      {
+        "name": "AI 绘画生成",
+        "level": "Midjourney · Stable Diffusion · DALL·E",
+        "icon": "🎨"
+      },
+      {
+        "name": "AI 视频制作",
+        "level": "Runway · Pika · Sora · Kling",
+        "icon": "🎬"
+      },
+      {
+        "name": "剧本与分镜",
+        "level": "ChatGPT · Claude · 故事架构",
+        "icon": "✍️"
+      },
+      {
+        "name": "后期与特效",
+        "level": "AE · Premiere · DaVinci",
+        "icon": "✨"
+      }
     ]
   },
   "works": [
@@ -25,7 +41,11 @@
       "type": "video",
       "desc": "一段穿越星际的孤独旅程，用 AI 生成构建梦幻宇宙叙事",
       "detail": "本项目使用 Midjourney 生成概念设定，Runway Gen-2 生成动态画面，经 DaVinci Resolve 调色后合成。讲述了一位孤独的星际旅人在宇宙边缘收到过去信号的故事，融合赛博美学与哲学思考。",
-      "tags": ["AI生成", "科幻", "4K"],
+      "tags": [
+        "AI生成",
+        "科幻",
+        "4K"
+      ],
       "duration": "03:24",
       "gradient": "linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)",
       "videoSrc": "/videos/xhlr.mp4",
@@ -39,7 +59,11 @@
       "type": "video",
       "desc": "霓虹城市的未来叙事，探讨人与AI的共生关系",
       "detail": "赛博朋克风格的 AI 漫剧短片。使用 Pika Labs 生成核心动态场景，配合 ChatGPT 辅助剧本创作。探讨了当 AI 拥有梦境后，它与人类记忆之间模糊的边界。",
-      "tags": ["赛博朋克", "叙事", "8K"],
+      "tags": [
+        "赛博朋克",
+        "叙事",
+        "8K"
+      ],
       "duration": "05:12",
       "gradient": "linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF6B35 100%)",
       "videoSrc": "/videos/赛博.mp4",
@@ -53,7 +77,11 @@
       "type": "video",
       "desc": "深海世界的神秘探索，AI生成构建水下奇观",
       "detail": "深海奇幻题材 AI 漫剧。以 Kling AI 生成水下动态场景，构建了一个沉睡千年后苏醒的深海古城。主角\"渊\"作为最后一位海语者，肩负起传承海族记忆的使命。",
-      "tags": ["奇幻", "水下", "IMAX"],
+      "tags": [
+        "奇幻",
+        "水下",
+        "IMAX"
+      ],
       "duration": "04:08",
       "gradient": "linear-gradient(135deg, #06141d 0%, #1a4a5e 40%, #FFB347 100%)",
       "videoSrc": "/videos/深海.mp4",
@@ -67,7 +95,11 @@
       "type": "video",
       "desc": "时间流转的视觉诗篇，从黎明到黄昏的光影叙事",
       "detail": "实验性短片作品。以\"时间\"为唯一主角，通过 AI 生成不同时段的光影变化，配合原创音乐，呈现从黎明到黄昏的一日光影流转。无对白纯视觉叙事。",
-      "tags": ["实验", "光影", "6K"],
+      "tags": [
+        "实验",
+        "光影",
+        "6K"
+      ],
       "duration": "02:45",
       "gradient": "linear-gradient(135deg, #1e1208 0%, #7a5c2e 40%, #FFE9A8 100%)",
       "videoSrc": "/videos/光阴.mp4",
@@ -76,13 +108,70 @@
     }
   ],
   "characters": [
-    { "id": 1, "name": "黎", "title": "星河旅人", "series": "星河旅人", "element": "星辰", "elementIcon": "✦", "backstory": "穿越星际的孤独旅人，在宇宙边缘收到了来自过去的信号。", "quote": "星辰不会回答，但它们会倾听。", "gradient": "linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)", "glow": "rgba(255, 122, 48, 0.5)", "imageSrc": "/images/characters/星河角色.png" },
-    { "id": 2, "name": "零", "title": "数据觉醒者", "series": "赛博之梦", "element": "数据", "elementIcon": "◈", "backstory": "在霓虹城市的底层，一段被遗忘的代码开始拥有梦境。", "quote": "如果我會做梦，那我的梦屬於誰？", "gradient": "linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF6B35 100%)", "glow": "rgba(255, 107, 53, 0.5)", "imageSrc": null },
-    { "id": 3, "name": "渊", "title": "深海语者", "series": "深海回响", "element": "深海", "elementIcon": "◊", "backstory": "沉睡千年的深海古城中，最后一位海语者苏醒。", "quote": "沉默，是深海最古老的語言。", "gradient": "linear-gradient(135deg, #06141d 0%, #1a4a5e 40%, #FFB347 100%)", "glow": "rgba(255, 179, 71, 0.5)", "imageSrc": null },
-    { "id": 4, "name": "椿", "title": "花语守护者", "series": "花语四季", "element": "花语", "elementIcon": "✿", "backstory": "四季花卉的守护精灵，用花瓣记录时间的流转。", "quote": "每一朵花，都是时间的情书。", "gradient": "linear-gradient(135deg, #1a1208 0%, #5e4a1c 40%, #FFB347 100%)", "glow": "rgba(255, 179, 71, 0.5)", "imageSrc": null },
-    { "id": 5, "name": "陈", "title": "代码诗人", "series": "赛博之梦", "element": "代码", "elementIcon": "▣", "backstory": "游走于现实与数字之间的黑客，用代码写诗。", "quote": "代码是另一種語言的詩。", "gradient": "linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF8C42 100%)", "glow": "rgba(255, 140, 66, 0.5)", "imageSrc": null },
-    { "id": 6, "name": "晨", "title": "古城守望者", "series": "古城晨曦", "element": "古韵", "elementIcon": "❋", "backstory": "守护千年古城的精灵，见证无数个晨曦与暮色。", "quote": "古城的每一块石頭，都是一段故事。", "gradient": "linear-gradient(135deg, #2D1B0E 0%, #8B4513 40%, #FFD56B 100%)", "glow": "rgba(255, 213, 107, 0.5)", "imageSrc": null },
-    { "id": 7, "name": "时", "title": "光阴记录者", "series": "光阴之间", "element": "光影", "elementIcon": "◐", "backstory": "以时间为唯一伴侣，记录光影流转的每一个瞬间。", "quote": "時間不會停留，但光影会。", "gradient": "linear-gradient(135deg, #1e1208 0%, #7a5c2e 40%, #FFE9A8 100%)", "glow": "rgba(255, 233, 168, 0.5)", "imageSrc": null },
-    { "id": 8, "name": "回音", "title": "信号流浪者", "series": "星河旅人", "element": "信号", "elementIcon": "◈", "backstory": "在星际间流浪的信号碎片，承载着逝去文明的记忆。", "quote": "我是回音，也是呼喚。", "gradient": "linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF8C42 100%)", "glow": "rgba(255, 140, 66, 0.5)", "imageSrc": null }
+    {
+      "id": 1,
+      "name": "黎",
+      "title": "星河旅人",
+      "series": "星河旅人",
+      "element": "星辰",
+      "elementIcon": "✦",
+      "backstory": "穿越星际的孤独旅人，在宇宙边缘收到了来自过去的信号。",
+      "quote": "星辰不会回答，但它们会倾听。",
+      "gradient": "linear-gradient(135deg, #1a0a2e 0%, #4a1c5e 40%, #FF7A30 100%)",
+      "glow": "rgba(255, 122, 48, 0.5)",
+      "imageSrc": "/images/characters/星河角色.png"
+    },
+    {
+      "id": 2,
+      "name": "零",
+      "title": "数据觉醒者",
+      "series": "赛博之梦",
+      "element": "数据",
+      "elementIcon": "◈",
+      "backstory": "在霓虹城市的底层，一段被遗忘的代码开始拥有梦境。",
+      "quote": "如果我會做梦，那我的梦屬於誰？",
+      "gradient": "linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF6B35 100%)",
+      "glow": "rgba(255, 107, 53, 0.5)",
+      "imageSrc": null
+    },
+    {
+      "id": 3,
+      "name": "渊",
+      "title": "深海语者",
+      "series": "深海回响",
+      "element": "深海",
+      "elementIcon": "◊",
+      "backstory": "沉睡千年的深海古城中，最后一位海语者苏醒。",
+      "quote": "沉默，是深海最古老的語言。",
+      "gradient": "linear-gradient(135deg, #06141d 0%, #1a4a5e 40%, #FFB347 100%)",
+      "glow": "rgba(255, 179, 71, 0.5)",
+      "imageSrc": null
+    },
+    {
+      "id": 4,
+      "name": "椿",
+      "title": "花语守护者",
+      "series": "花语四季",
+      "element": "花语",
+      "elementIcon": "✿",
+      "backstory": "四季花卉的守护精灵，用花瓣记录时间的流转。",
+      "quote": "每一朵花，都是时间的情书。",
+      "gradient": "linear-gradient(135deg, #1a1208 0%, #5e4a1c 40%, #FFB347 100%)",
+      "glow": "rgba(255, 179, 71, 0.5)",
+      "imageSrc": null
+    },
+    {
+      "id": 5,
+      "name": "陈",
+      "title": "代码诗人",
+      "series": "赛博之梦",
+      "element": "代码",
+      "elementIcon": "▣",
+      "backstory": "游走于现实与数字之间的黑客，用代码写诗。",
+      "quote": "代码是另一種語言的詩。",
+      "gradient": "linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF8C42 100%)",
+      "glow": "rgba(255, 140, 66, 0.5)",
+      "imageSrc": null
+    }
   ]
 }
