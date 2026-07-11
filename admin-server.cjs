@@ -48,9 +48,11 @@ const server = http.createServer((req, res) => {
   // 推送到GitHub
   if (req.url === '/api/push' && req.method === 'POST') {
     try {
+      const { execSync } = require('child_process')
       execSync('git add -A', { cwd: PROJECT_DIR })
-      const msg = `后台更新: ${new Date().toLocaleString('zh-CN')}`
-      execSync(`git commit -m "${msg}"`, { cwd: PROJECT_DIR })
+      const now = new Date()
+      const msg = 'backend-update-' + now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + '-' + String(now.getHours()).padStart(2,'0') + String(now.getMinutes()).padStart(2,'0')
+      execSync('git commit -m "' + msg + '"', { cwd: PROJECT_DIR })
       execSync('git push', { cwd: PROJECT_DIR, timeout: 60000 })
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' })
       res.end(JSON.stringify({ success: true, message: '推送成功！' }))
