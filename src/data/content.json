@@ -159,19 +159,6 @@
       "gradient": "linear-gradient(135deg, #1a1208 0%, #5e4a1c 40%, #FFB347 100%)",
       "glow": "rgba(255, 179, 71, 0.5)",
       "imageSrc": null
-    },
-    {
-      "id": 5,
-      "name": "陈",
-      "title": "代码诗人",
-      "series": "赛博之梦",
-      "element": "代码",
-      "elementIcon": "▣",
-      "backstory": "游走于现实与数字之间的黑客，用代码写诗。",
-      "quote": "代码是另一種語言的詩。",
-      "gradient": "linear-gradient(135deg, #0a0a1a 0%, #1a0a3e 40%, #FF8C42 100%)",
-      "glow": "rgba(255, 140, 66, 0.5)",
-      "imageSrc": null
     }
   ]
 }
