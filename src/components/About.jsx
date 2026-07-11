@@ -1,3 +1,4 @@
+import avatarImg from '../assets/avatar.png'
 import './About.css'
 
 const SKILLS = [
@@ -64,7 +65,7 @@ export default function About() {
               <div className="about__avatar">
                 <div className="about__avatar-ring" />
                 <div className="about__avatar-core">
-                  <span>X</span>
+                  <img src={avatarImg} alt="XiaoXin" className="about__avatar-img" />
                 </div>
               </div>
               <div className="about__card-info">
